@@ -43,7 +43,7 @@ class AssignmentController extends Controller
     public function delete($id)
     {
         $asignacion = Assignment::with('machine')->findOrFail($id);
-        $statusDisponible = Status::where('nombre', 'Disponible')->firstOrFail();
+        $statusDisponible = Status::where('name', 'Disponible')->firstOrFail();
         $maquinaria = $asignacion->machine;
         $maquinaria->status_id = $statusDisponible->id;
         $maquinaria->save();
